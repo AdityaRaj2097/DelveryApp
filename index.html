@@ -30,25 +30,48 @@ src="https://unpkg.com/react@18/umd/react.development.js"
     src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
    ></script>
 <script>
+    // console.log({React})
+    // console.log({ReactDOM})
+    // let heading=document.createElement("h1")
+    // heading.innerHTML="Serverside rendering"
+    // const root=ReactDOM.createRoot(document.getElementById("root"));
+    // // root.append(heading)
+    // console.log({root})
+
+    // const heading2=React.createElement("h1",{
+    //   id:"heading1",
+    //   hello:"Wordl king"
+    // }," heading with react");
+    //     //  Hello will act as props of 
+    // const heading3=React.createElement("h1",{}," HEading 2");
+
+
+
+    // console.log({heading2})
+    // root.render(heading2)
     console.log({React})
-    console.log({ReactDOM})
-    let heading=document.createElement("h1")
-    heading.innerHTML="Serverside rendering"
+    console.log({ReactDOM});
+    const heading1=React.createElement("h1",{
+      id:"headingfirst",
+      key:"3",
+      world:"hello"
+    },"Heading")
+    const heaading2= React.createElement("p",{
+      id:"para1",
+      key:"1",
+      hello:"paragraph"
+    } ,"Paragraph") 
+    //  for adding multiple child we Add content in array 
+    const container=React.createElement("div" ,{
+      id:"container",
+      key:"2",
+      root:"divcontainer"
+    },[heading1,heaading2])
+    
+
     const root=ReactDOM.createRoot(document.getElementById("root"));
-    // root.append(heading)
-    console.log({root})
+    root.render(container)
 
-    const heading2=React.createElement("h1",{
-      id:"heading1",
-      hello:"Wordl king"
-    }," heading with react");
-        //  Hello will act as props of 
-    const heading3=React.createElement("h1",{}," HEading 2");
-
-
-
-    console.log({heading2})
-    root.render(heading2)
 
 </script>
 
