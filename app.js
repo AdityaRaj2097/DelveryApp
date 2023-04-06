@@ -43,7 +43,7 @@ second way of writing compoennet
   }
 
 
-  //  do frpm here
+  //  do frpm h
   const root=ReactDOM.createRoot(document.getElementById("root"));
   root.render(Headercomnpoent2)  
   root.render(<Headercomnpoent2></Headercomnpoent2>)  
