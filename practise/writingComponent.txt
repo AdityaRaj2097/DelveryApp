@@ -1,0 +1,20 @@
+const Headercomponent=()=>{
+    return(
+      <div>
+        In simple context
+
+        </div>
+    )
+}
+const headerFooter=()=>{
+    return(
+        <div>
+        Header Footer
+        </>
+    )
+}
+const mainBanner= function(){
+    reuturn (
+        <>mainBanner</>
+    )
+}
