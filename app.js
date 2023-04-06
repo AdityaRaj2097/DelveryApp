@@ -45,5 +45,7 @@ second way of writing compoennet
 
   //  do frpm h
   const root=ReactDOM.createRoot(document.getElementById("root"));
-  root.render(Headercomnpoent2)  
+  // root.render(heaading2)  way of  rendering  the ReactElement
+
+  //  way of rendering the Function Component
   root.render(<Headercomnpoent2></Headercomnpoent2>)  
