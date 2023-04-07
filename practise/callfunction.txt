@@ -1,0 +1,6 @@
+1st way
+ <button onClick={()=>{setSearchResturant()}}>Search</button> 
+
+
+ 2nd way
+ <button onClick={setSearchResturant}>Search</button> 

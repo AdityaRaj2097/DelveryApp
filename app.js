@@ -1,51 +1,98 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-const heading1=React.createElement("h1",{
-    id:"headingfirst",
-    key:"3",
-    world:"hello"
-  },"Heading wit ssr")
-  const heaading2= React.createElement("p",{
-    id:"para1",
-    key:"1",
-    hello:"paragraphddd"
-  } ,"Paragraph with ssr") 
-  //  for adding multiple child we Add content in array 
-  const container=React.createElement("div" ,{
-    id:"container",
-    key:"2",
-    root:"divcontainer with ssr"
-  },[heading1,heaading2])
-  // console.log({heading1})
-  const Headercomponent=()=>{
-    return(
-      <>
-First way of writing compoennet
+import restrautList from "./src/constant/rest"
+import { useState } from "react";
+import "./index.css"
 
-      </>
-    )
+const Title = () => (
+  <a href="/">
+    <img
+      className="logo"
+      alt="logo"
+      src="https://yt3.ggpht.com/ytc/AMLnZu_EC-ECXAxRAixWGEfMsE1rdSoetBHyxmLNdtCB=s900-c-k-c0x00ffffff-no-rj"
+    />
+  </a>
+);
+const Header =()=>{
+  return (
+  <div className="header">
+       <Title />
+
+      <div className="nav-items">
+        <ul>
+          <li>Home</li>
+          <li>About</li>
+          <li>Contact</li>
+          <li>Cart</li>
+        </ul>
+      </div>
+    </div>
+  )
+}
+
+const RestrauntCard =({name,cuisines,cloudinaryImageId,lastMileTravelString}) => {
+  return(
+<div className="card">
+      <img
+        src={
+          "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/" +
+          cloudinaryImageId
+        }
+      />
+      <h2>{name}</h2>
+      <h3>{cuisines.join(", ")}</h3>
+      <h4>{lastMileTravelString} minutes</h4>
+    </div>
+  ); 
+}
+const Body=()=>{
+  let [searchText,setSearchText]=useState("")
+  let [returantdata,setResturantdata]=useState(restrautList)
+  console.log({searchText})
+  // let setSearchText="kfc"
+  const setSearchResturant=()=>{
+console.log(" click btn")
+let filteredresturant=restrautList.filter((restaurant)=>{
+ return restaurant.data.name.includes(searchText)
+})
+console.log({filteredresturant} ,{searchText})
+setResturantdata(filteredresturant)
+
+
   }
-  const Headercomponent1=function(){
-    return(
-      <>
-second way of writing compoennet
+  return(
+       <div className="search-container"> 
+       <input type="text" className="search-input"placeholder="Search"  value={searchText}  onChange={ (e)=>{  setSearchText(e.target.value) }   }   > 
+       
+        
+       </input>
+        <button onClick={()=>{setSearchResturant()}}>Search</button> 
 
-      </>
-    )
-  }
-   
+    <div className="restaurant-list">
+      {returantdata.map((rest)=>{
+return <RestrauntCard {...rest.data} key={rest.data.id}> </RestrauntCard>
+      })
 
-  console.log({Headercomponent})
-  // it was not Working  recheck and tell us 
-  const Headercomnpoent2 = () =>{
-    <h1>This is the Third way of Writing the function but its not working checking   </h1>
+    }
+    </div>
+    </div>
+ 
+  )
+}
+const AppLayout=()=>{
+  return(
+    <>
+    <Header/>
+   <Body></Body>
+    <h1>Footer</h1>
+    </>
+  )
+ 
+}
 
-  }
 
-
-  //  do frpm h
   const root=ReactDOM.createRoot(document.getElementById("root"));
   // root.render(heaading2)  way of  rendering  the ReactElement
 
   //  way of rendering the Function Component
-  root.render(<Headercomnpoent2></Headercomnpoent2>)  
+  root.render(<AppLayout></AppLayout>)  
